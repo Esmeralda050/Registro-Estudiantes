@@ -1,0 +1,129 @@
+.home__contenedor{
+    display: flex;
+    flex-direction: column; 
+}
+
+.home__titulo{
+    color: var(--verdeLimonPastel);
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: "Irish Grover", system-ui;
+    margin: 2rem 0 2rem 5rem;
+}
+
+/* Estilo para el contenedor del banner */
+.contenedor__banner {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin: 20px; 
+}
+
+.banner {
+    background-color: var(--blanco);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    border-radius: 0; 
+}
+
+.banner__img {
+    width: 80vw; 
+    height: auto; 
+    margin: 20px 0; 
+}
+
+/* Estilos del contenedor del botón */
+.boton__contenedor {
+    width: 100%; 
+    margin: 0; 
+}
+
+.boton__titulo{
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.boton__agregar {
+    color: var(--verde);
+    background-color: var(--verdeLimonPastel);
+    border: none;
+    border-radius: 10px;
+    display: flex; 
+    align-items: center;
+    padding: 2rem;
+    width: 100%; 
+    height: auto; 
+    margin-top: 20px; 
+}
+
+.boton__agregar:hover{
+    cursor: pointer;
+    color: var(--verdePasto);
+    background-color: var(--verdeLimon);
+}
+
+.icon-fa {
+    margin-right: 20px; 
+    font-size: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .home__titulo{
+        margin: 2rem 0 0 30rem;
+    }
+    
+    .home__contenedor{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+
+    .contenedor__banner {
+        justify-content: flex-start;
+        margin: 50px;
+    }
+
+    .banner{
+        border-radius: 23px;
+    }
+
+    .banner__img {
+        width: 30vw; 
+        height: auto;
+    }
+
+    .boton__agregar{
+        width: 20vw;
+        height: 10vh;
+    }
+
+    .icon-fa{
+        font-size: 20px;
+    }
+
+    .boton__titulo{
+        font-size: 16px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

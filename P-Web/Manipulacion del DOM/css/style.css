@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Itim&display=swap');
+@import url(../css/style.css);
+@import url(../css/tabla.css);
+@import url(../css/cuadroModal.css);
+@import url(../css/banner.css);
+@import url(../css/home.css);
+@import url(../css/barraBuscar.css);
+@import url();
+
+
+:root{
+  --th: #f2f2f2;
+  --borde: #ddd;
+  --blanco: #fff;
+  --rojo: #FB503B;
+  --azul: #157591;
+  --verde: #50a300;
+  --dorado: #ffcc3b;
+  --rojoVino: #8E0000;
+  --azulClaro: #20DAD9;
+  --verdePasto: #224b25;
+  --verdeOlivo: #9bbf0b;
+  --verdeLimon: #e2e055;
+  --verdeOscuro: #082d17;
+  --verdeLimonClaro: #ffff92;
+  --verdeLimonPapel: #fffff1;
+  --verdeLimonPastel: #fafad7;
+}
+
+body{
+  background-color: var(--verdeOscuro);
+  font-family: "Itim", cursive;
+}
+
+/* h1{
+  font-family: "Irish Grover", system-ui;
+} */
+

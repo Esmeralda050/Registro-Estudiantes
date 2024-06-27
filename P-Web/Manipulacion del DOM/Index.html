@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Icono de la pestaña del navegador -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.svg">
+    <!-- Estilos externos -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Íconos de Font Awesome -->
+    <script src="https://kit.fontawesome.com/b9ff11db4e.js" crossorigin="anonymous"></script>
+    <title>El DOM JS</title>
+</head>
+<body>
+    <main>
+        <section class="home">
+            <h1 class="home__titulo">Alumnos</h1>
+            <div class="home__contenedor">
+                <div class="contenedor__banner">
+                    <!-- Banner -->
+                    <div class="banner">
+                        <img class="banner__img" src="./assets/banner.svg" alt="">
+                    </div>
+                    <!-- Botón para agregar alumno -->
+                    <button class="boton__agregar" type="submit" id="registro-modal">
+                        <i class="icon-fa fa-solid fa-user-plus"></i>
+                        <h4 class="boton__titulo">Agregar Alumno</h4>
+                    </button>
+                    <!-- Cuadro Modal para agregar estudiantes -->
+                    <div class="modal" id="modalAgregarEstudiante">
+                        <div class="modal__contenido">
+                            <span class="cerrar-modal" id="cerrarModal">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </span>
+                            <h1 class="modal__titulo">Agregar Estudiante</h1>
+                            <img src="./assets/cuadroModal.svg" alt="Imagen" class="modal__img">
+                            <form id="formularioAgregarEstudiante">
+                                <input type="text" placeholder="Nombre" name="nombre" id="nombre" title="Este campo solo acepta letras mayúsculas, minúsculas, espacios y letras acentuadas." pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required >
+                                <input type="text" placeholder="Apellido" name="apellido" id="apellido" title="Este campo solo acepta letras mayúsculas, minúsculas, espacios y letras acentuadas." pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+                                <input type="number" placeholder="Matrícula" name="matricula" id="matricula" title="Este campo solo acepta números, ingrese su matrícula sin guiones." required>
+                                <input type="text" placeholder="Materia" name="materia" id="materia" title="Este campo solo acepta letras mayúsculas, minúsculas, espacios y letras acentuadas." pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+                                <input type="number" placeholder="Nota" name="nota" id="nota" step="0.01" title="Solo se permiten 2 decimales luego del punto y 3 digitos enteros" oninput="validarNota(event)" required>
+                                <button type="submit" class="btn-agregar">Agregar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="boton__contenedor">
+                    <!-- Cuadro Modal para editar estudiantes -->
+                    <div class="modal" id="modalEditarEstudiante">
+                        <div class="modal__contenido modalContenido">
+                            <span class="cerrar-modal" onclick="cerrarModalEditar()">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </span>
+                            <h1 class="modal__titulo">Editar Estudiante</h1>
+                            <img src="./assets/edit.svg" alt="Imagen" class="modal__img">
+                            <form id="formularioEditarEstudiante">
+                                <input type="text" placeholder="Nombre" name="nombre" id="nombreEdit" title="Este campo solo acepta letras mayúsculas, minúsculas, espacios y letras acentuadas." pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required >
+                                <input type="text" placeholder="Apellido" name="apellido" id="apellidoEdit" title="Este campo solo acepta letras mayúsculas, minúsculas, espacios y letras acentuadas." pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+                                <input type="number" placeholder="Matrícula" name="matricula" id="matriculaEdit" title="Este campo solo acepta números, ingrese su matrícula sin guiones." required>
+                                <input type="text" placeholder="Materia" name="materia" id="materiaEdit" title="Este campo solo acepta letras mayúsculas, minúsculas, espacios y letras acentuadas." pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+                                <input type="number" placeholder="Nota" name="nota" id="notaEdit" step="0.01" title="Solo se permiten 2 decimales luego del punto y 3 digitos enteros" oninput="validarNota(event)" required>
+                                <button type="submit" class="btn">Guardar Cambios</button>
+                            </form>
+                        </div>
+                    </div>
+
+                   <!-- Cuadro Modal para eliminar estudiantes -->
+                    <div class="modal" id="modalEliminarEstudiante">
+                        <div class="modal__contenido modalContenido">
+                            <span class="cerrar-modal" onclick="cerrarModalEliminar()">
+                                <i class="fa-regular fa-circle-xmark"></i>
+                            </span>
+                            <h1 class="modal__titulo">Eliminar Estudiante</h1>
+                            <img src="./assets/delete.svg" alt="Imagen" class="modal__img">
+                            <p>¿Estás seguro de que quieres eliminar a este alumno?</p>
+                            <div class="btn__contenedor">
+                                <button class="btn" onclick="confirmarEliminarAlumno()">Eliminar</button>
+                                <button class="btn" onclick="cerrarModalEliminar()">No</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <!-- Tabla lista de estudiantes -->
+                    <div class="tabla">
+                        <div class="tabla__encabezado">
+                            <h4>Registro de alumnos</h4>
+                            <!-- Barra de búsqueda -->
+                            <div class="barra__buscar">
+                                <input type="text" placeholder="Buscar" name="buscar" id="input__buscar">
+                                <button class="btn__buscar" onclick="buscarAlumnos()"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="tabla__contenido">
+                            <table class="tab" id="tabAlumnos">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Matricula</th>
+                                        <th>Materia</th>
+                                        <th>Nota</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Pie de la tarjeta -->
+                    <div class="paginacion__card">
+                        <div class="paginacion__cardContenedor">
+                            <!-- Contador de entradas y navegación de páginas -->
+                            <div class="paginacion__cardEntradas">
+                                Mostrar 6 entradas
+                                <i class="fa-solid fa-angles-right"></i>
+                            </div>
+                            <!-- Navegación de páginas -->
+                            <div class="paginacion__contenedor">
+                                <nav class="paginaNavegacion">
+                                    <ul class="paginaNavegacion__contenido">
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+<script src="./app.js"></script>
+<script src="./validaciones.js"></script>
+</body>
+</html> 

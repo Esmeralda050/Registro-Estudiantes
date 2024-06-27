@@ -1,0 +1,165 @@
+.tabla{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-top: 30px;  
+    background-color: var(--blanco);
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+
+.tabla__encabezado{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tabla__encabezado h4{
+    font-family: "Irish Grover", system-ui;
+    font-size: 25px;
+    text-align: center;
+    color: var(--verdePasto);
+    margin-bottom: 20px; 
+}
+
+.tabla__contenido{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blanco);
+}
+
+.tabla th{
+    background-color: var(--verdeOlivo);
+    color: var(--verdeOscuro);
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    width: 200px;
+    /* border: 1px solid black; */
+}
+
+tr:nth-child(even) {
+    background-color: var(--verdeLimonClaro); /* Color de fondo para filas pares */
+}
+
+.tabla td{
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    /* border: 1px solid black; */
+}
+
+.boton-editar{
+    background-color: var(--azul);
+    border: none;
+    color: var(--blanco); 
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.boton-editar:hover{
+    background-color: var(--azulClaro);
+}
+
+.boton-eliminar {
+    background-color: var(--rojoVino); 
+    border: none;
+    color: var(--blanco); 
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.boton-eliminar:hover {
+    background-color: var(--rojo); 
+}
+
+/* Estilos para el pie de la tarjeta */
+.paginacion__card {
+    margin-top: 1rem;
+}
+
+/* Contenedor para el pie de la tarjeta */
+.paginacion__cardContenedor {
+    margin-top: 40px 2px; 
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+}
+
+/* Etiqueta para mostrar la cantidad de entradas */
+.paginacion__cardEntradas {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    color: var(--verde);
+    font-weight: bold;
+}
+
+/* Lista de navegación de páginas en el pie de la tarjeta */
+.paginacion__contenedor {
+    list-style: none;
+    gap: 0.5rem;
+    margin-right: 40px;
+    padding: 0;
+}
+
+.paginacion__contenedor li{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Elemento de la lista de navegación de páginas */
+.pagina__items {
+    display: inline-block;
+}
+
+/* Enlace de la lista de navegación de páginas */
+.pagina__items a {
+    text-decoration: none;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid var(--blanco);
+    border-radius: 3px;
+    color: var(--verdeLimonClaro);
+}
+
+/* Estilo para el enlace activo en la lista de navegación de páginas */
+.pagina__items.active a {
+    background-color: var(--verde);
+    color: var(--blanco);
+}
+
+/* Icono de flecha derecha en la lista de navegación de páginas */
+.fa-angles-right {
+    font-size: 0.5rem;
+}
+
+/* Efecto de resaltado al pasar el ratón sobre los enlaces de la lista de navegación de páginas */
+.pagina__link:hover {
+    background-color: var(--verdeLimon);
+    color: black;
+    font-weight: 500;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .paginacion__cardContenedor {
+        margin: 20px 0;
+    }
+
+    .paginacion__contenedor {
+        margin-left: 190px;
+    }
+}
